@@ -13,4 +13,11 @@ class TABLETOP_API AC_TileBase : public AActor
 
 public:
 	AC_TileBase();
+
+protected:
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Custom|Tile")
+	TObjectPtr<UStaticMeshComponent> MeshComponent;
+
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Custom|Tile")
+	TObjectPtr<UStaticMesh> DefaultTileMesh;
 };
