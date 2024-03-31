@@ -7,7 +7,7 @@ AC_TileBase::AC_TileBase()
 	PrimaryActorTick.bCanEverTick = false;
 
 	SetRootComponent(CreateDefaultSubobject<USceneComponent>("CustomRoot"));
-	
+
 	MeshComponent = CreateDefaultSubobject<UStaticMeshComponent>("MeshComponent");
 	MeshComponent->SetupAttachment(RootComponent);
 }

@@ -14,10 +14,28 @@ class TABLETOP_API AC_TileBase : public AActor
 public:
 	AC_TileBase();
 
-protected:
-	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Custom|Tile")
-	TObjectPtr<UStaticMeshComponent> MeshComponent;
+	UPROPERTY(VisibleInstanceOnly, BlueprintReadWrite, Category = "Custom|Grid")
+	FVector TilePosition;
 
-	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Custom|Tile")
-	TObjectPtr<UStaticMesh> DefaultTileMesh;
+	UPROPERTY(VisibleInstanceOnly, BlueprintReadWrite, Category = "Custom|Grid")
+	TObjectPtr<AC_TileBase> NeighbourNorth = nullptr;
+
+	UPROPERTY(VisibleInstanceOnly, BlueprintReadWrite, Category = "Custom|Grid")
+	TObjectPtr<AC_TileBase> NeighbourEast = nullptr;
+
+	UPROPERTY(VisibleInstanceOnly, BlueprintReadWrite, Category = "Custom|Grid")
+	TObjectPtr<AC_TileBase> NeighbourSouthEast = nullptr;
+
+	UPROPERTY(VisibleInstanceOnly, BlueprintReadWrite, Category = "Custom|Grid")
+	TObjectPtr<AC_TileBase> NeighbourSouth = nullptr;
+
+	UPROPERTY(VisibleInstanceOnly, BlueprintReadWrite, Category = "Custom|Grid")
+	TObjectPtr<AC_TileBase> NeighbourWest = nullptr;
+
+	UPROPERTY(VisibleInstanceOnly, BlueprintReadWrite, Category = "Custom|Grid")
+	TObjectPtr<AC_TileBase> NeighbourNorthWest = nullptr;
+
+protected:
+	UPROPERTY(VisibleDefaultsOnly, BlueprintReadOnly, Category = "Custom|Tile")
+	TObjectPtr<UStaticMeshComponent> MeshComponent;
 };
