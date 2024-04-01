@@ -15,27 +15,20 @@ public:
 	AC_TileBase();
 
 	UPROPERTY(VisibleInstanceOnly, BlueprintReadWrite, Category = "Custom|Grid")
-	FVector TilePosition;
+	FVector2D OffsetCoords;
 
 	UPROPERTY(VisibleInstanceOnly, BlueprintReadWrite, Category = "Custom|Grid")
-	TObjectPtr<AC_TileBase> NeighbourNorth = nullptr;
+	FVector CubeCoords;
 
+#pragma region Neighbours
 	UPROPERTY(VisibleInstanceOnly, BlueprintReadWrite, Category = "Custom|Grid")
-	TObjectPtr<AC_TileBase> NeighbourEast = nullptr;
-
-	UPROPERTY(VisibleInstanceOnly, BlueprintReadWrite, Category = "Custom|Grid")
-	TObjectPtr<AC_TileBase> NeighbourSouthEast = nullptr;
-
-	UPROPERTY(VisibleInstanceOnly, BlueprintReadWrite, Category = "Custom|Grid")
-	TObjectPtr<AC_TileBase> NeighbourSouth = nullptr;
-
-	UPROPERTY(VisibleInstanceOnly, BlueprintReadWrite, Category = "Custom|Grid")
-	TObjectPtr<AC_TileBase> NeighbourWest = nullptr;
-
-	UPROPERTY(VisibleInstanceOnly, BlueprintReadWrite, Category = "Custom|Grid")
-	TObjectPtr<AC_TileBase> NeighbourNorthWest = nullptr;
+	TArray<TObjectPtr<AC_TileBase>> Neighbours;
+#pragma endregion
 
 protected:
 	UPROPERTY(VisibleDefaultsOnly, BlueprintReadOnly, Category = "Custom|Tile")
 	TObjectPtr<UStaticMeshComponent> MeshComponent;
+
+	UFUNCTION(BlueprintCallable, Category = "Custom|Grid")
+	void OffsetToCube();
 };

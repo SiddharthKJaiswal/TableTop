@@ -17,10 +17,10 @@ public:
 	AC_GridSystem();
 
 protected:
-	UFUNCTION(BlueprintCallable, CallInEditor, Category = "Custom|Grid")
+	UFUNCTION(BlueprintNativeEvent, CallInEditor, Category = "Custom")
 	void SpawnTiles();
 
-	UFUNCTION(BlueprintCallable, CallInEditor, Category = "Custom|Grid")
+	UFUNCTION(BlueprintCallable, CallInEditor, Category = "Custom")
 	void DestroyTiles();
 
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Custom|Grid")
@@ -40,4 +40,7 @@ protected:
 
 	UPROPERTY(VisibleInstanceOnly, BlueprintReadOnly, Category = "Custom|Grid")
 	float HexagonRowOffset;
+
+	UFUNCTION(BlueprintCallable, Category = "Custom|Grid")
+	void GetNeighbours(AC_TileBase* ThisTile);
 };
