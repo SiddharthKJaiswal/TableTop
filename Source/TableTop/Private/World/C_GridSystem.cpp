@@ -12,7 +12,7 @@ void AC_GridSystem::SpawnTiles_Implementation()
 {
 }
 
-void AC_GridSystem::DestroyTiles()
+void AC_GridSystem::DestroyTiles_Implementation()
 {
 	for (const TTuple<UE::Math::TVector2<double>, AC_TileBase*> NewTile : TileMap)
 	{
@@ -21,34 +21,12 @@ void AC_GridSystem::DestroyTiles()
 	TileMap.Empty();
 }
 
-FTransform AC_GridSystem::GetSpawnTransform(int32 IndexX, int32 IndexY, int32& OutIndexX, int32& OutIndexY)
+FTransform AC_GridSystem::GetSpawnTransform_Implementation(FVector2D Coords)
 {
-	FVector SpawnPosition = GetActorLocation();
-
-	OutIndexX = IndexX;
-	OutIndexY = IndexY;
-
-	if (IndexX % 2 == 1)
-	{
-		SpawnPosition.X += IndexX * 2.0f * HexagonInRadius + HexagonInRadius * -1.0f;
-	}
-	else
-	{
-		SpawnPosition.X += IndexX * 2.0f * HexagonInRadius;
-	}
-	SpawnPosition.Y += IndexY * 1.5f * (HexagonInRadius * 2.0f / FMath::Sqrt(3.0f));
-
-	FTransform SpawnTransform = GetActorTransform();
-	SpawnTransform.SetLocation(SpawnPosition);
-	return SpawnTransform;
+	return GetActorTransform();
 }
 
-void AC_GridSystem::GetNeighbours(AC_TileBase* ThisTile)
+void AC_GridSystem::AssignNeighbour_Implementation()
 {
-	int X = ThisTile->OffsetCoords.X;
-	if (X % 2 == 0)
-	{
-		ThisTile->CubeCoords = FVector(10, 10, 10);
-		//ThisTile->NeighbourWest = TileMap.Find(FVector2D(ThisTile->CubeCoords.X, ThisTile->CubeCoords.X - 1));
-	}
+	
 }

@@ -14,21 +14,13 @@ class TABLETOP_API AC_TileBase : public AActor
 public:
 	AC_TileBase();
 
-	UPROPERTY(VisibleInstanceOnly, BlueprintReadWrite, Category = "Custom|Grid")
-	FVector2D OffsetCoords;
+	UPROPERTY(VisibleInstanceOnly, BlueprintReadWrite, Category = "Custom|Grid", meta = (ExposeOnSpawn = true))
+	FVector2D Coordinates;
 
-	UPROPERTY(VisibleInstanceOnly, BlueprintReadWrite, Category = "Custom|Grid")
-	FVector CubeCoords;
-
-#pragma region Neighbours
 	UPROPERTY(VisibleInstanceOnly, BlueprintReadWrite, Category = "Custom|Grid")
 	TArray<TObjectPtr<AC_TileBase>> Neighbours;
-#pragma endregion
 
 protected:
 	UPROPERTY(VisibleDefaultsOnly, BlueprintReadOnly, Category = "Custom|Tile")
 	TObjectPtr<UStaticMeshComponent> MeshComponent;
-
-	UFUNCTION(BlueprintCallable, Category = "Custom|Grid")
-	void OffsetToCube();
 };

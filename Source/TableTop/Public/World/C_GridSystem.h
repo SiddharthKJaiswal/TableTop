@@ -13,34 +13,36 @@ class TABLETOP_API AC_GridSystem : public AActor
 {
 	GENERATED_BODY()
 
-public:
-	AC_GridSystem();
-
+#pragma region Data
 protected:
-	UFUNCTION(BlueprintNativeEvent, CallInEditor, Category = "Custom")
-	void SpawnTiles();
-
-	UFUNCTION(BlueprintCallable, CallInEditor, Category = "Custom")
-	void DestroyTiles();
-
-	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Custom|Grid")
-	TObjectPtr<UClass> TileActor;
-
-	UPROPERTY(VisibleInstanceOnly, BlueprintReadOnly, Category = "Custom|Grid")
+	UPROPERTY(VisibleInstanceOnly, BlueprintReadWrite, Category = "Custom|Grid")
 	TMap<FVector2D, AC_TileBase*> TileMap;
 
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Custom|Grid")
 	FVector2D GridSize;
-	
-	UFUNCTION(BlueprintCallable, Category = "Custom|Grid")
-	FTransform GetSpawnTransform(int32 IndexX, int32 IndexY, int32& OutIndexX, int32& OutIndexY);
 
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Custom|Grid")
 	float HexagonInRadius;
 
 	UPROPERTY(VisibleInstanceOnly, BlueprintReadOnly, Category = "Custom|Grid")
 	float HexagonRowOffset;
+#pragma endregion
 
-	UFUNCTION(BlueprintCallable, Category = "Custom|Grid")
-	void GetNeighbours(AC_TileBase* ThisTile);
+#pragma region Functions
+public:
+	AC_GridSystem();
+
+protected:
+	UFUNCTION(BlueprintCallable, BlueprintNativeEvent, CallInEditor)
+	void SpawnTiles();
+
+	UFUNCTION(BlueprintCallable, BlueprintNativeEvent, CallInEditor)
+	void DestroyTiles();
+	
+	UFUNCTION(BlueprintCallable, BlueprintNativeEvent)
+	FTransform GetSpawnTransform(FVector2D Coords);
+
+	UFUNCTION(BlueprintCallable, BlueprintNativeEvent)
+	void AssignNeighbour();
+#pragma endregion
 };
