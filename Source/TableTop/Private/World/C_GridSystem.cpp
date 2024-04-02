@@ -21,6 +21,10 @@ void AC_GridSystem::DestroyTiles_Implementation()
 	TileMap.Empty();
 }
 
+void AC_GridSystem::FindDistanceBetweenTiles_Implementation()
+{
+}
+
 FTransform AC_GridSystem::GetSpawnTransform_Implementation(FVector2D Coords)
 {
 	return GetActorTransform();
@@ -28,5 +32,4 @@ FTransform AC_GridSystem::GetSpawnTransform_Implementation(FVector2D Coords)
 
 void AC_GridSystem::AssignNeighbour_Implementation()
 {
-	
 }

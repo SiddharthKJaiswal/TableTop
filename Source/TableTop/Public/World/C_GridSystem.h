@@ -21,11 +21,8 @@ protected:
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Custom|Grid")
 	FVector2D GridSize;
 
-	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Custom|Grid")
+	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "Custom|Grid")
 	float HexagonInRadius;
-
-	UPROPERTY(VisibleInstanceOnly, BlueprintReadOnly, Category = "Custom|Grid")
-	float HexagonRowOffset;
 #pragma endregion
 
 #pragma region Functions
@@ -38,7 +35,10 @@ protected:
 
 	UFUNCTION(BlueprintCallable, BlueprintNativeEvent, CallInEditor)
 	void DestroyTiles();
-	
+
+	UFUNCTION(BlueprintCallable, BlueprintNativeEvent, CallInEditor)
+	void FindDistanceBetweenTiles();
+
 	UFUNCTION(BlueprintCallable, BlueprintNativeEvent)
 	FTransform GetSpawnTransform(FVector2D Coords);
 
