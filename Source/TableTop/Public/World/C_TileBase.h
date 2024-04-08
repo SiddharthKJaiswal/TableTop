@@ -20,6 +20,33 @@ public:
 	UPROPERTY(VisibleInstanceOnly, BlueprintReadWrite, Category = "Custom|Grid")
 	TArray<TObjectPtr<AC_TileBase>> Neighbours;
 
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Custom|Grid", meta = (ExposeOnSpawn = true))
+	int32 MovementCost = 1;
+	
+	UPROPERTY(VisibleInstanceOnly, BlueprintReadWrite, Category = "Custom|Grid")
+	int32 MovementCostTotal;
+
+	UPROPERTY(VisibleInstanceOnly, BlueprintReadWrite, Category = "Custom|Grid")
+	int32 MovementCostToReachThisTile;
+
+	UPROPERTY(VisibleInstanceOnly, BlueprintReadWrite, Category = "Custom|Grid")
+	int32 MovementCostToReachTarget;
+
+	UFUNCTION(BlueprintCallable, BlueprintNativeEvent)
+	void ResetColor();
+	
+	UFUNCTION(BlueprintCallable, BlueprintNativeEvent)
+	void SetColorOpen();
+
+	UFUNCTION(BlueprintCallable, BlueprintNativeEvent)
+	void SetColorClose();
+
+	UFUNCTION(BlueprintCallable, BlueprintNativeEvent)
+	void SetColorBacktrack();
+
+	UFUNCTION(BlueprintCallable, BlueprintNativeEvent)
+	void SetTileValues();
+
 protected:
 	UPROPERTY(VisibleDefaultsOnly, BlueprintReadOnly, Category = "Custom|Tile")
 	TObjectPtr<UStaticMeshComponent> MeshComponent;

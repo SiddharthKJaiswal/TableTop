@@ -6,7 +6,12 @@
 #include "GameFramework/Actor.h"
 #include "C_GridSystem.generated.h"
 
+#pragma region ForwardDeclarations
 class AC_TileBase;
+#pragma endregion
+
+#pragma region Structs
+#pragma endregion
 
 UCLASS()
 class TABLETOP_API AC_GridSystem : public AActor
@@ -23,6 +28,12 @@ protected:
 
 	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "Custom|Grid")
 	float HexagonInRadius;
+
+	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "Custom|Grid")
+	TArray<AC_TileBase*> OpenList;
+
+	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "Custom|Grid")
+	TArray<AC_TileBase*> ClosedList;
 #pragma endregion
 
 #pragma region Functions

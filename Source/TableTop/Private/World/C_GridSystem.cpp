@@ -16,13 +16,17 @@ void AC_GridSystem::DestroyTiles_Implementation()
 {
 	for (const TTuple<UE::Math::TVector2<double>, AC_TileBase*> NewTile : TileMap)
 	{
-		NewTile.Value->Destroy();
+		if(NewTile.Value != nullptr)
+		{
+			NewTile.Value->Destroy();
+		}
 	}
 	TileMap.Empty();
 }
 
 void AC_GridSystem::FindDistanceBetweenTiles_Implementation()
 {
+	
 }
 
 FTransform AC_GridSystem::GetSpawnTransform_Implementation(FVector2D Coords)
